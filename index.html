@@ -18,7 +18,7 @@
           background-image: -webkit-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), -webkit-linear-gradient(left, rgba(255,255,255,0.05) 1px, transparent 1px);
           background-size: 60px 60px; -webkit-mask-image: -webkit-linear-gradient(top, transparent, black); }
 
-  #main { position: absolute; left: 8%; top: 22%; width: 52%; }
+  #main { position: absolute; left: 8%; top: 7%; width: 52%; }
   @media (max-width: 1300px) { #tipbox { display: none; } #main { width: 84%; } #title { font-size: 64px; } }
   #tag { font-size: 15px; letter-spacing: 6px; color: #d4202f; font-weight: bold; text-transform: uppercase; }
   #title { font-size: 84px; font-weight: 900; letter-spacing: 3px; margin: 6px 0 0 0; line-height: 1;
@@ -36,11 +36,20 @@
          -webkit-transition: width 0.4s ease; box-shadow: 0 0 18px rgba(240,160,32,0.6); }
   #file { font-size: 12px; color: #77748c; margin-top: 8px; height: 16px; overflow: hidden; white-space: nowrap; }
 
-  #tipbox { position: absolute; right: 8%; top: 24%; width: 380px; padding: 22px 24px; border-radius: 14px;
+  #tipbox { position: absolute; right: 8%; top: 9%; width: 380px; padding: 22px 24px; border-radius: 14px;
             background: rgba(10,8,20,0.55); border: 1px solid rgba(255,255,255,0.1); }
   #tiphead { font-size: 13px; letter-spacing: 3px; color: #f0a020; font-weight: bold; margin-bottom: 10px; }
   #tip { font-size: 17px; line-height: 1.5; min-height: 78px; -webkit-transition: opacity 0.5s; }
   #info { margin-top: 18px; font-size: 13px; color: #8d8aa3; line-height: 1.8; }
+  #lb { margin-top: 30px; display: none; }
+  #lbhead { font-size: 13px; letter-spacing: 3px; color: #f0a020; font-weight: bold; margin-bottom: 10px; }
+  .lbcol { display: inline-block; vertical-align: top; width: 31%; margin-right: 2%; padding: 14px 16px; border-radius: 12px;
+           background: rgba(10,8,20,0.6); border: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; }
+  .lbcol h3 { margin: 0 0 10px 0; font-size: 13px; letter-spacing: 2px; }
+  .lbrow { font-size: 15px; line-height: 1.9; white-space: nowrap; overflow: hidden; }
+  .lbrow b { display: inline-block; width: 26px; }
+  .lbrow i { float: right; font-style: normal; font-weight: bold; }
+  .r1 b { color: #f0be28; } .r2 b { color: #cdcddc; } .r3 b { color: #cd7f32; }
   #music { position: absolute; right: 8%; bottom: 3%; font-size: 12px; color: #6d6a82; }
 </style>
 </head>
@@ -56,9 +65,13 @@
   <div id="title">SUPREME <span>DARK RP</span></div>
   <div id="sub">The city is waiting. Pick a job, make money, rule the streets.</div>
   <div id="chips">
-    <span class="chip">M9K Weapons</span><span class="chip">Drugs</span><span class="chip">Casino</span>
-    <span class="chip">Bank Robberies</span><span class="chip">Cars</span><span class="chip">Money Printers</span>
-    <span class="chip">Wiremod</span><span class="chip">30+ Jobs</span>
+    <span class="chip">45 Jobs</span><span class="chip">Levels &amp; XP</span><span class="chip">Supreme Casino</span>
+    <span class="chip">Money Printers</span><span class="chip">Mining &amp; Crafting</span><span class="chip">Clans</span>
+    <span class="chip">Bank Robberies</span><span class="chip">Loan Sharks</span><span class="chip">Emotes</span><span class="chip">Wiremod</span>
+  </div>
+  <div id="lb">
+    <div id="lbhead">SUPREME LEADERBOARDS</div>
+    <div class="lbcol"><h3 style="color:#3cb45a">RICHEST</h3><div id="lbm"></div></div><div class="lbcol"><h3 style="color:#e0303f">HIGHEST LEVEL</h3><div id="lbl"></div></div><div class="lbcol" style="margin-right:0"><h3 style="color:#e0a020">TOP CLANS</h3><div id="lbc"></div></div>
   </div>
 </div>
 
@@ -83,18 +96,18 @@
 
 <script>
 var tips = [
-  "Press F4 to open the shop and change jobs.",
-  "Money printers overheat. Buy the Cooling upgrade or keep a fire extinguisher handy.",
-  "Police get a reward for destroying money printers. Hide yours well!",
-  "Banks can be robbed by Thieves, Gangsters and the Mob Boss, but only if a cop is online.",
-  "The Car Dealer buys cars 40% cheaper. Make a deal with them!",
-  "Medics can revive you with the Revival Tool for 30 seconds after you die.",
-  "Need help? Call staff with @ in chat or use !menu if you're staff.",
-  "Hungry? Find a Cook. Hunger is enabled on this server.",
-  "Lumberjacks, Miners, Farmers and Fishermen earn honest money.",
-  "Breaking the rules (RDM, prop killing, spam) can get you banned. Read the rules with F1.",
-  "Hitmen take contracts. Press E on a Hitman to place a hit.",
-  "Drug Dealers sell to the Drug Buyer. Watch out for the police!"
+  "Press F4 to open the shop, change jobs, craft and see the leaderboards.",
+  "Money printers need batteries. Upgrade them and hide them well - police get rewards for raids!",
+  "Level up to unlock better jobs and printers. Press F7 for level perks.",
+  "Mine Gold, Ruby, Sapphire and Obsidian crystals and sell them to the Ore Buyer. Turn on automine with R.",
+  "Craft legendary weapons from ore in F4 > Crafting, like the Dragon Lore and the Ray Gun.",
+  "Try your luck at the Supreme Casino: slots, blackjack, roulette and Crash.",
+  "When you die you bleed out for 60 seconds - wait for a medic or skip to respawn.",
+  "Press L to open the emote menu. Look at a player to emote at them.",
+  "Loan Sharks lend money - but miss the deadline and they can come for you.",
+  "Start a clan in F4 > Clan and climb the Top Clans leaderboard.",
+  "Use the Supreme ATMs around the city to keep your money safe in the bank.",
+  "Breaking the rules (RDM, prop killing, spam) gets you banned. Read the rules in F4."
 ];
 var tipIndex = 0;
 var filesTotal = 0, filesNeeded = 1;
@@ -139,6 +152,31 @@ function SetStatusChanged(status) {
   if (s.indexOf("sending client info") >= 0) setProgress(90);
   if (s.indexOf("client info sent") >= 0 || s.indexOf("starting lua") >= 0) setProgress(97);
 }
+
+// leaderboard: the server adds ?m=..&l=..&c=.. (name~value,name~value,...) to this page's address
+function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+function param(k) {
+  var m = new RegExp("[?&]" + k + "=([^&]*)").exec(window.location.search);
+  if (!m) return "";
+  try { return decodeURIComponent(m[1].replace(/\+/g, " ")); } catch (e) { return ""; }
+}
+function fillBoard(id, raw, prefix) {
+  var html = "", rows = raw ? raw.split(",") : [];
+  for (var i = 0; i < rows.length && i < 5; i++) {
+    var p = rows[i].split("~");
+    if (!p[0]) continue;
+    html += '<div class="lbrow r' + (i + 1) + '"><b>#' + (i + 1) + '</b>' + esc(p[0]) + '<i>' + esc(prefix + (p[1] || "")) + '</i></div>';
+  }
+  document.getElementById(id).innerHTML = html || '<div class="lbrow" style="color:#77748c">No one yet</div>';
+  return rows.length > 0;
+}
+(function () {
+  var any = false;
+  any = fillBoard("lbm", param("m"), "$") || any;
+  any = fillBoard("lbl", param("l"), "Lvl ") || any;
+  any = fillBoard("lbc", param("c"), "$") || any;
+  if (any) document.getElementById("lb").style.display = "block";
+})();
 
 var a0 = document.getElementById("audio");
 if (a0) { a0.volume = 0.35; try { a0.play(); } catch (e) {} }
