@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Supreme Dark RP</title>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #07070c; font-family: "Segoe UI", Arial, sans-serif; color: #e8e8f0; }
+  #bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+        background: -webkit-radial-gradient(30% 20%, circle, #2a1240 0%, #0c0a18 45%, #050508 100%); }
+  .glow { position: absolute; border-radius: 50%; opacity: 0.35; -webkit-filter: blur(40px); }
+  #g1 { width: 520px; height: 520px; left: -120px; top: 55%; background: #d4202f; -webkit-animation: drift1 18s ease-in-out infinite; }
+  #g2 { width: 600px; height: 600px; right: -160px; top: -120px; background: #6b2bd6; -webkit-animation: drift2 22s ease-in-out infinite; }
+  #g3 { width: 380px; height: 380px; left: 45%; top: 70%; background: #f0a020; opacity: 0.18; -webkit-animation: drift1 26s ease-in-out infinite reverse; }
+  @-webkit-keyframes drift1 { 0% { -webkit-transform: translate(0,0); } 50% { -webkit-transform: translate(120px,-80px); } 100% { -webkit-transform: translate(0,0); } }
+  @-webkit-keyframes drift2 { 0% { -webkit-transform: translate(0,0); } 50% { -webkit-transform: translate(-140px,90px); } 100% { -webkit-transform: translate(0,0); } }
+
+  #grid { position: absolute; left: 0; bottom: 0; width: 100%; height: 45%;
+          background-image: -webkit-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), -webkit-linear-gradient(left, rgba(255,255,255,0.05) 1px, transparent 1px);
+          background-size: 60px 60px; -webkit-mask-image: -webkit-linear-gradient(top, transparent, black); }
+
+  #main { position: absolute; left: 8%; top: 22%; width: 52%; }
+  @media (max-width: 1300px) { #tipbox { display: none; } #main { width: 84%; } #title { font-size: 64px; } }
+  #tag { font-size: 15px; letter-spacing: 6px; color: #d4202f; font-weight: bold; text-transform: uppercase; }
+  #title { font-size: 84px; font-weight: 900; letter-spacing: 3px; margin: 6px 0 0 0; line-height: 1;
+           text-shadow: 0 0 40px rgba(212,32,47,0.55); }
+  #title span { color: #d4202f; }
+  #sub { font-size: 20px; color: #a9a6c0; margin-top: 14px; }
+  #chips { margin-top: 22px; }
+  .chip { display: inline-block; padding: 7px 14px; margin: 0 8px 8px 0; border-radius: 20px; font-size: 14px;
+          background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); }
+
+  #bottom { position: absolute; left: 8%; right: 8%; bottom: 9%; }
+  #status { font-size: 16px; color: #cfcbe6; margin-bottom: 10px; height: 22px; overflow: hidden; white-space: nowrap; }
+  #barwrap { height: 10px; border-radius: 6px; background: rgba(255,255,255,0.08); overflow: hidden; }
+  #bar { height: 100%; width: 3%; border-radius: 6px; background: -webkit-linear-gradient(left, #d4202f, #f0a020);
+         -webkit-transition: width 0.4s ease; box-shadow: 0 0 18px rgba(240,160,32,0.6); }
+  #file { font-size: 12px; color: #77748c; margin-top: 8px; height: 16px; overflow: hidden; white-space: nowrap; }
+
+  #tipbox { position: absolute; right: 8%; top: 24%; width: 380px; padding: 22px 24px; border-radius: 14px;
+            background: rgba(10,8,20,0.55); border: 1px solid rgba(255,255,255,0.1); }
+  #tiphead { font-size: 13px; letter-spacing: 3px; color: #f0a020; font-weight: bold; margin-bottom: 10px; }
+  #tip { font-size: 17px; line-height: 1.5; min-height: 78px; -webkit-transition: opacity 0.5s; }
+  #info { margin-top: 18px; font-size: 13px; color: #8d8aa3; line-height: 1.8; }
+  #music { position: absolute; right: 8%; bottom: 3%; font-size: 12px; color: #6d6a82; }
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div class="glow" id="g1"></div>
+<div class="glow" id="g2"></div>
+<div class="glow" id="g3"></div>
+<div id="grid"></div>
+
+<div id="main">
+  <div id="tag">Welcome to</div>
+  <div id="title">SUPREME <span>DARK RP</span></div>
+  <div id="sub">The city is waiting. Pick a job, make money, rule the streets.</div>
+  <div id="chips">
+    <span class="chip">M9K Weapons</span><span class="chip">Drugs</span><span class="chip">Casino</span>
+    <span class="chip">Bank Robberies</span><span class="chip">Cars</span><span class="chip">Money Printers</span>
+    <span class="chip">Wiremod</span><span class="chip">30+ Jobs</span>
+  </div>
+</div>
+
+<div id="tipbox">
+  <div id="tiphead">DID YOU KNOW</div>
+  <div id="tip">Press F4 to open the shop and change jobs.</div>
+  <div id="info">
+    <div id="map">Map: loading...</div>
+    <div id="players">Max players: -</div>
+    <div id="gm">Gamemode: DarkRP</div>
+  </div>
+</div>
+
+<div id="bottom">
+  <div id="status">Connecting to the server...</div>
+  <div id="barwrap"><div id="bar"></div></div>
+  <div id="file"></div>
+</div>
+
+<div id="music">&#9835; Supreme Dark RP theme</div>
+<audio id="audio" src="music.wav" autoplay loop></audio>
+
+<script>
+var tips = [
+  "Press F4 to open the shop and change jobs.",
+  "Money printers overheat. Buy the Cooling upgrade or keep a fire extinguisher handy.",
+  "Police get a reward for destroying money printers. Hide yours well!",
+  "Banks can be robbed by Thieves, Gangsters and the Mob Boss, but only if a cop is online.",
+  "The Car Dealer buys cars 40% cheaper. Make a deal with them!",
+  "Medics can revive you with the Revival Tool for 30 seconds after you die.",
+  "Need help? Call staff with @ in chat or use !menu if you're staff.",
+  "Hungry? Find a Cook. Hunger is enabled on this server.",
+  "Lumberjacks, Miners, Farmers and Fishermen earn honest money.",
+  "Breaking the rules (RDM, prop killing, spam) can get you banned. Read the rules with F1.",
+  "Hitmen take contracts. Press E on a Hitman to place a hit.",
+  "Drug Dealers sell to the Drug Buyer. Watch out for the police!"
+];
+var tipIndex = 0;
+var filesTotal = 0, filesNeeded = 1;
+
+function rotateTip() {
+  var el = document.getElementById("tip");
+  el.style.opacity = 0;
+  setTimeout(function () {
+    tipIndex = (tipIndex + 1) % tips.length;
+    el.innerHTML = tips[tipIndex];
+    el.style.opacity = 1;
+  }, 500);
+}
+setInterval(rotateTip, 7000);
+
+function setProgress(p) {
+  p = Math.max(3, Math.min(100, p));
+  document.getElementById("bar").style.width = p + "%";
+}
+function updateFileProgress() {
+  if (filesTotal > 0) setProgress(100 * (filesTotal - filesNeeded) / filesTotal);
+}
+
+// ---- functions Garry's Mod calls while loading ----
+function GameDetails(servername, serverurl, mapname, maxplayers, steamid, gamemode, volume, language) {
+  document.getElementById("map").innerHTML = "Map: " + mapname;
+  document.getElementById("players").innerHTML = "Max players: " + maxplayers;
+  document.getElementById("gm").innerHTML = "Gamemode: " + gamemode;
+  var a = document.getElementById("audio");
+  if (a && typeof volume === "number") a.volume = Math.max(0.05, Math.min(1, volume * 0.6));
+}
+function SetFilesTotal(total) { filesTotal = total; updateFileProgress(); }
+function SetFilesNeeded(needed) { filesNeeded = needed; updateFileProgress(); }
+function DownloadingFile(fileName) {
+  document.getElementById("file").innerHTML = "Downloading: " + fileName;
+}
+function SetStatusChanged(status) {
+  document.getElementById("status").innerHTML = status;
+  var s = status.toLowerCase();
+  if (s.indexOf("workshop") >= 0) setProgress(35);
+  if (s.indexOf("lua") >= 0) setProgress(65);
+  if (s.indexOf("sending client info") >= 0) setProgress(90);
+  if (s.indexOf("client info sent") >= 0 || s.indexOf("starting lua") >= 0) setProgress(97);
+}
+
+var a0 = document.getElementById("audio");
+if (a0) { a0.volume = 0.35; try { a0.play(); } catch (e) {} }
+</script>
+</body>
+</html>
