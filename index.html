@@ -4,151 +4,250 @@
 <meta charset="utf-8">
 <title>Supreme Dark RP</title>
 <style>
-  html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #07070c; font-family: "Segoe UI", Arial, sans-serif; color: #e8e8f0; }
-  #bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%;
-        background: -webkit-radial-gradient(30% 20%, circle, #2a1240 0%, #0c0a18 45%, #050508 100%); }
-  .glow { position: absolute; border-radius: 50%; opacity: 0.35; -webkit-filter: blur(40px); }
-  #g1 { width: 520px; height: 520px; left: -120px; top: 55%; background: #d4202f; -webkit-animation: drift1 18s ease-in-out infinite; }
-  #g2 { width: 600px; height: 600px; right: -160px; top: -120px; background: #6b2bd6; -webkit-animation: drift2 22s ease-in-out infinite; }
-  #g3 { width: 380px; height: 380px; left: 45%; top: 70%; background: #f0a020; opacity: 0.18; -webkit-animation: drift1 26s ease-in-out infinite reverse; }
-  @-webkit-keyframes drift1 { 0% { -webkit-transform: translate(0,0); } 50% { -webkit-transform: translate(120px,-80px); } 100% { -webkit-transform: translate(0,0); } }
-  @-webkit-keyframes drift2 { 0% { -webkit-transform: translate(0,0); } 50% { -webkit-transform: translate(-140px,90px); } 100% { -webkit-transform: translate(0,0); } }
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #05050a; font-family: "Segoe UI", Arial, sans-serif; color: #ececf4; }
+  #sky { position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+         background: -webkit-linear-gradient(top, #07071a 0%, #150b2a 45%, #2a0d22 72%, #3a0f18 100%); }
+  #moon { position: absolute; right: 14%; top: 9%; width: 110px; height: 110px; border-radius: 50%;
+          background: -webkit-radial-gradient(35% 35%, circle, #fff8e6 0%, #e9dcc0 55%, #cbb98f 100%);
+          box-shadow: 0 0 60px 20px rgba(255,236,190,0.18), 0 0 160px 60px rgba(255,200,120,0.08); }
+  .glow { position: absolute; border-radius: 50%; opacity: 0.32; -webkit-filter: blur(60px); }
+  #g1 { width: 700px; height: 380px; left: -10%; bottom: -8%; background: #d4202f; -webkit-animation: drift 16s ease-in-out infinite; }
+  #g2 { width: 600px; height: 340px; right: -8%; bottom: -10%; background: #7b2bd6; -webkit-animation: drift 21s ease-in-out infinite reverse; }
+  #g3 { width: 420px; height: 260px; left: 40%; bottom: -12%; background: #f0a020; opacity: 0.2; -webkit-animation: drift 26s ease-in-out infinite; }
+  @-webkit-keyframes drift { 0% { -webkit-transform: translate(0,0); } 50% { -webkit-transform: translate(90px,-40px); } 100% { -webkit-transform: translate(0,0); } }
 
-  #grid { position: absolute; left: 0; bottom: 0; width: 100%; height: 45%;
-          background-image: -webkit-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), -webkit-linear-gradient(left, rgba(255,255,255,0.05) 1px, transparent 1px);
-          background-size: 60px 60px; -webkit-mask-image: -webkit-linear-gradient(top, transparent, black); }
+  #city { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
+  #snow { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+  #vignette { position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+              background: -webkit-radial-gradient(50% 45%, ellipse cover, rgba(0,0,0,0) 45%, rgba(0,0,0,0.75) 100%); }
 
-  #main { position: absolute; left: 8%; top: 7%; width: 52%; }
-  @media (max-width: 1300px) { #tipbox { display: none; } #main { width: 84%; } #title { font-size: 64px; } }
-  #tag { font-size: 15px; letter-spacing: 6px; color: #d4202f; font-weight: bold; text-transform: uppercase; }
-  #title { font-size: 84px; font-weight: 900; letter-spacing: 3px; margin: 6px 0 0 0; line-height: 1;
-           text-shadow: 0 0 40px rgba(212,32,47,0.55); }
-  #title span { color: #d4202f; }
-  #sub { font-size: 20px; color: #a9a6c0; margin-top: 14px; }
-  #chips { margin-top: 22px; }
-  .chip { display: inline-block; padding: 7px 14px; margin: 0 8px 8px 0; border-radius: 20px; font-size: 14px;
-          background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); }
+  #main { position: absolute; left: 7%; top: 8%; width: 56%; }
+  #tag { font-size: 14px; letter-spacing: 8px; color: #f0a020; font-weight: bold; text-transform: uppercase; }
+  #logo { margin-top: 10px; line-height: 0.95; font-weight: 900; letter-spacing: 4px; }
+  #logo .a { font-size: 104px; color: #fff; text-shadow: 0 0 6px #fff, 0 0 22px #ff3a4c, 0 0 48px #d4202f, 0 0 90px #d4202f;
+             -webkit-animation: flicker 6s infinite; }
+  #logo .b { font-size: 58px; color: #d4202f; letter-spacing: 18px; text-shadow: 0 0 18px rgba(212,32,47,0.8); }
+  @-webkit-keyframes flicker { 0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; } 20%, 24%, 55% { opacity: 0.55; } }
+  #sub { font-size: 20px; color: #b9b5d2; margin-top: 18px; }
+  #chips { margin-top: 20px; width: 92%; }
+  .chip { display: inline-block; padding: 7px 14px; margin: 0 8px 9px 0; border-radius: 6px; font-size: 13px; font-weight: 600; letter-spacing: 1px;
+          background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); text-transform: uppercase; }
+  .chip.hot { border-color: rgba(240,160,32,0.7); color: #ffd27a; background: rgba(240,160,32,0.10); }
 
-  #bottom { position: absolute; left: 8%; right: 8%; bottom: 9%; }
-  #status { font-size: 16px; color: #cfcbe6; margin-bottom: 10px; height: 22px; overflow: hidden; white-space: nowrap; }
-  #barwrap { height: 10px; border-radius: 6px; background: rgba(255,255,255,0.08); overflow: hidden; }
-  #bar { height: 100%; width: 3%; border-radius: 6px; background: -webkit-linear-gradient(left, #d4202f, #f0a020);
-         -webkit-transition: width 0.4s ease; box-shadow: 0 0 18px rgba(240,160,32,0.6); }
-  #file { font-size: 12px; color: #77748c; margin-top: 8px; height: 16px; overflow: hidden; white-space: nowrap; }
+  #spot { margin-top: 18px; width: 560px; height: 92px; position: relative; overflow: hidden; border-radius: 12px;
+          background: rgba(12,8,22,0.66); border: 1px solid rgba(255,255,255,0.1); }
+  #spot .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: -webkit-linear-gradient(top, #f0a020, #d4202f); }
+  #spot .new { position: absolute; left: 22px; top: 14px; font-size: 11px; letter-spacing: 3px; color: #f0a020; font-weight: bold; }
+  #spotTitle { position: absolute; left: 22px; top: 32px; font-size: 22px; font-weight: 800; -webkit-transition: opacity 0.5s; }
+  #spotText { position: absolute; left: 22px; top: 62px; font-size: 14px; color: #a9a5c3; -webkit-transition: opacity 0.5s; }
 
-  #tipbox { position: absolute; right: 8%; top: 9%; width: 380px; padding: 22px 24px; border-radius: 14px;
-            background: rgba(10,8,20,0.55); border: 1px solid rgba(255,255,255,0.1); }
-  #tiphead { font-size: 13px; letter-spacing: 3px; color: #f0a020; font-weight: bold; margin-bottom: 10px; }
-  #tip { font-size: 17px; line-height: 1.5; min-height: 78px; -webkit-transition: opacity 0.5s; }
-  #info { margin-top: 18px; font-size: 13px; color: #8d8aa3; line-height: 1.8; }
-  #lb { margin-top: 30px; display: none; }
-  #lbhead { font-size: 13px; letter-spacing: 3px; color: #f0a020; font-weight: bold; margin-bottom: 10px; }
-  .lbcol { display: inline-block; vertical-align: top; width: 31%; margin-right: 2%; padding: 14px 16px; border-radius: 12px;
-           background: rgba(10,8,20,0.6); border: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; }
-  .lbcol h3 { margin: 0 0 10px 0; font-size: 13px; letter-spacing: 2px; }
-  .lbrow { font-size: 15px; line-height: 1.9; white-space: nowrap; overflow: hidden; }
+  #lb { margin-top: 22px; display: none; width: 92%; }
+  .lbhead { font-size: 12px; letter-spacing: 4px; color: #f0a020; font-weight: bold; margin-bottom: 10px; }
+  .lbcol { display: inline-block; vertical-align: top; width: 31%; margin-right: 2%; padding: 12px 14px; border-radius: 10px;
+           background: rgba(10,8,20,0.62); border: 1px solid rgba(255,255,255,0.09); box-sizing: border-box; }
+  .lbcol h3 { margin: 0 0 8px 0; font-size: 12px; letter-spacing: 2px; }
+  .lbrow { font-size: 14px; line-height: 1.85; white-space: nowrap; overflow: hidden; }
   .lbrow b { display: inline-block; width: 26px; }
   .lbrow i { float: right; font-style: normal; font-weight: bold; }
   .r1 b { color: #f0be28; } .r2 b { color: #cdcddc; } .r3 b { color: #cd7f32; }
-  #music { position: absolute; right: 8%; bottom: 3%; font-size: 12px; color: #6d6a82; }
+
+  #side { position: absolute; right: 7%; top: 30%; width: 360px; padding: 22px 24px; border-radius: 14px;
+          background: rgba(10,8,20,0.62); border: 1px solid rgba(255,255,255,0.1); }
+  .head { font-size: 12px; letter-spacing: 4px; color: #f0a020; font-weight: bold; margin-bottom: 10px; }
+  #tip { font-size: 17px; line-height: 1.5; min-height: 78px; -webkit-transition: opacity 0.5s; }
+  #info { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: #8f8ba8; line-height: 1.9; }
+  #info b { color: #d8d4ee; font-weight: 600; }
+  @media (max-width: 1300px) { #side { display: none; } #main { width: 86%; } #logo .a { font-size: 80px; } #logo .b { font-size: 44px; } }
+
+  #bottom { position: absolute; left: 7%; right: 7%; bottom: 7%; }
+  #pct { position: absolute; right: 0; top: -6px; font-size: 40px; font-weight: 900; color: #fff; text-shadow: 0 0 20px rgba(240,160,32,0.6); }
+  #status { font-size: 16px; color: #d8d4ee; margin-bottom: 12px; height: 22px; overflow: hidden; white-space: nowrap; width: 80%; }
+  #barwrap { height: 12px; border-radius: 6px; background: rgba(255,255,255,0.07); overflow: hidden; position: relative; }
+  #bar { height: 100%; width: 3%; border-radius: 6px; background: -webkit-linear-gradient(left, #d4202f, #f0a020);
+         -webkit-transition: width 0.5s ease; box-shadow: 0 0 22px rgba(240,160,32,0.7); position: relative; overflow: hidden; }
+  #bar:after { content: ""; position: absolute; top: 0; bottom: 0; width: 120px; left: -120px;
+               background: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.55), rgba(255,255,255,0));
+               -webkit-animation: shine 1.8s linear infinite; }
+  @-webkit-keyframes shine { 0% { left: -120px; } 100% { left: 100%; } }
+  #file { font-size: 12px; color: #7d7996; margin-top: 8px; height: 16px; overflow: hidden; white-space: nowrap; }
+
+  #music { position: absolute; right: 7%; bottom: 2.5%; font-size: 12px; color: #77738f; letter-spacing: 1px; }
+  #eq { display: inline-block; height: 12px; margin-right: 8px; vertical-align: -1px; }
+  #eq i { display: inline-block; width: 3px; height: 4px; margin-right: 2px; background: #f0a020; -webkit-animation: eq 0.9s ease-in-out infinite; }
+  #eq i:nth-child(2) { -webkit-animation-delay: 0.2s; } #eq i:nth-child(3) { -webkit-animation-delay: 0.45s; } #eq i:nth-child(4) { -webkit-animation-delay: 0.1s; }
+  @-webkit-keyframes eq { 0%, 100% { height: 3px; } 50% { height: 12px; } }
 </style>
 </head>
 <body>
-<div id="bg"></div>
+<div id="sky"></div>
+<div id="moon"></div>
 <div class="glow" id="g1"></div>
 <div class="glow" id="g2"></div>
 <div class="glow" id="g3"></div>
-<div id="grid"></div>
+<canvas id="city"></canvas>
+<canvas id="snow"></canvas>
+<div id="vignette"></div>
 
 <div id="main">
-  <div id="tag">Welcome to</div>
-  <div id="title">SUPREME <span>DARK RP</span></div>
-  <div id="sub">The city is waiting. Pick a job, make money, rule the streets.</div>
+  <div id="tag">Welcome to the city</div>
+  <div id="logo"><div class="a">SUPREME</div><div class="b">DARK RP</div></div>
+  <div id="sub">Pick a job, make your fortune, run the streets &mdash; and stay out of jail.</div>
   <div id="chips">
-    <span class="chip">45 Jobs</span><span class="chip">Levels &amp; XP</span><span class="chip">Supreme Casino</span>
-    <span class="chip">Money Printers</span><span class="chip">Mining &amp; Crafting</span><span class="chip">Clans</span>
-    <span class="chip">Bank Robberies</span><span class="chip">Loan Sharks</span><span class="chip">Emotes</span><span class="chip">Wiremod</span>
+    <span class="chip hot">Knife Cases</span><span class="chip hot">Bitminers</span><span class="chip hot">Crips vs Bloods</span>
+    <span class="chip">55+ Jobs</span><span class="chip">Supreme Skills</span><span class="chip">Casino</span><span class="chip">Money Printers</span>
+    <span class="chip">Mining &amp; Crafting</span><span class="chip">Clans</span><span class="chip">Bank Robberies</span><span class="chip">Christmas Event</span>
+  </div>
+  <div id="spot">
+    <div class="bar"></div>
+    <div class="new">NEW ON SUPREME</div>
+    <div id="spotTitle">Knife Cases</div>
+    <div id="spotText">4 cases, CS-style rarities and a 1 in 10 shot at a &#9733; Gold knife.</div>
   </div>
   <div id="lb">
-    <div id="lbhead">SUPREME LEADERBOARDS</div>
+    <div class="lbhead">SUPREME LEADERBOARDS</div>
     <div class="lbcol"><h3 style="color:#3cb45a">RICHEST</h3><div id="lbm"></div></div><div class="lbcol"><h3 style="color:#e0303f">HIGHEST LEVEL</h3><div id="lbl"></div></div><div class="lbcol" style="margin-right:0"><h3 style="color:#e0a020">TOP CLANS</h3><div id="lbc"></div></div>
   </div>
 </div>
 
-<div id="tipbox">
-  <div id="tiphead">DID YOU KNOW</div>
+<div id="side">
+  <div class="head">DID YOU KNOW</div>
   <div id="tip">Press F4 to open the shop and change jobs.</div>
   <div id="info">
-    <div id="map">Map: loading...</div>
-    <div id="players">Max players: -</div>
-    <div id="gm">Gamemode: DarkRP</div>
+    <div>Map: <b id="map">loading...</b></div>
+    <div>Slots: <b id="players">-</b></div>
+    <div>Gamemode: <b id="gm">DarkRP</b></div>
   </div>
 </div>
 
 <div id="bottom">
+  <div id="pct">0%</div>
   <div id="status">Connecting to the server...</div>
   <div id="barwrap"><div id="bar"></div></div>
   <div id="file"></div>
 </div>
 
-<div id="music">&#9835; Supreme Dark RP</div>
+<div id="music"><span id="eq"><i></i><i></i><i></i><i></i></span>Supreme Dark RP Radio</div>
 <audio id="audio" src="music.mp3" autoplay loop></audio>
 
 <script>
-var tips = [
-  "Press F4 to open the shop, change jobs, craft and see the leaderboards.",
-  "Money printers need batteries. Upgrade them and hide them well - police get rewards for raids!",
-  "Level up to unlock better jobs and printers. Press F7 for level perks.",
-  "Mine Gold, Ruby, Sapphire and Obsidian crystals and sell them to the Ore Buyer. Turn on automine with R.",
-  "Craft legendary weapons from ore in F4 > Crafting, like the Dragon Lore and the Ray Gun.",
-  "Try your luck at the Supreme Casino: slots, blackjack, roulette and Crash.",
-  "When you die you bleed out for 60 seconds - wait for a medic or skip to respawn.",
-  "Press L to open the emote menu. Look at a player to emote at them.",
-  "Loan Sharks lend money - but miss the deadline and they can come for you.",
-  "Start a clan in F4 > Clan and climb the Top Clans leaderboard.",
-  "Use the Supreme ATMs around the city to keep your money safe in the bank.",
-  "Breaking the rules (RDM, prop killing, spam) gets you banned. Read the rules in F4."
-];
-var tipIndex = 0;
-var filesTotal = 0, filesNeeded = 1;
+var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || function (f) { return setTimeout(f, 33); };
 
-function rotateTip() {
-  var el = document.getElementById("tip");
-  el.style.opacity = 0;
-  setTimeout(function () {
-    tipIndex = (tipIndex + 1) % tips.length;
-    el.innerHTML = tips[tipIndex];
-    el.style.opacity = 1;
-  }, 500);
+// ---------------------------------------------------------------- night city skyline
+var city = document.getElementById("city"), cx = city.getContext("2d");
+var buildings = [];
+function makeCity() {
+  city.width = window.innerWidth; city.height = window.innerHeight;
+  buildings = [];
+  var layers = [ { h: 0.42, c: "#120a1e", win: 0.10 }, { h: 0.32, c: "#0b0714", win: 0.18 } ];
+  for (var l = 0; l < layers.length; l++) {
+    var L = layers[l], x = -40;
+    while (x < city.width + 200) {
+      var w = 50 + Math.random() * 110, h = city.height * L.h * (0.35 + Math.random() * 0.65);
+      var wins = [];
+      for (var wy = 14; wy < h - 10; wy += 16) for (var wx = 8; wx < w - 10; wx += 13)
+        if (Math.random() < L.win) wins.push([wx, wy, Math.random() < 0.15 ? "#ffd27a" : (Math.random() < 0.5 ? "#f6e3b0" : "#9fb8ff"), Math.random() * 6.28]);
+      buildings.push({ x: x, w: w, h: h, c: L.c, wins: wins, antenna: Math.random() < 0.25 });
+      x += w + Math.random() * 14;
+    }
+  }
 }
-setInterval(rotateTip, 7000);
+var t0 = Date.now();
+function drawCity() {
+  var t = (Date.now() - t0) / 1000;
+  cx.clearRect(0, 0, city.width, city.height);
+  for (var i = 0; i < buildings.length; i++) {
+    var b = buildings[i], top = city.height - b.h;
+    var x = b.x; // the skyline stays still; the windows twinkle
+    cx.fillStyle = b.c; cx.fillRect(x, top, b.w, b.h);
+    if (b.antenna) { cx.fillRect(x + b.w / 2 - 1, top - 30, 2, 30); cx.fillStyle = (Math.sin(t * 3 + i) > 0) ? "#ff3a4c" : "#5a1018"; cx.fillRect(x + b.w / 2 - 2, top - 33, 4, 4); }
+    for (var k = 0; k < b.wins.length; k++) {
+      var wn = b.wins[k];
+      cx.globalAlpha = 0.55 + 0.45 * Math.sin(t * 0.7 + wn[3]);
+      cx.fillStyle = wn[2]; cx.fillRect(x + wn[0], top + wn[1], 6, 8);
+    }
+    cx.globalAlpha = 1;
+  }
+}
 
+// ---------------------------------------------------------------- snow
+var snow = document.getElementById("snow"), sx = snow.getContext("2d"), flakes = [];
+function makeSnow() {
+  snow.width = window.innerWidth; snow.height = window.innerHeight; flakes = [];
+  for (var i = 0; i < 160; i++) flakes.push({ x: Math.random() * snow.width, y: Math.random() * snow.height, r: 0.6 + Math.random() * 2.4, v: 0.4 + Math.random() * 1.3, d: Math.random() * 6.28 });
+}
+function drawSnow() {
+  sx.clearRect(0, 0, snow.width, snow.height);
+  sx.fillStyle = "rgba(255,255,255,0.85)";
+  for (var i = 0; i < flakes.length; i++) {
+    var f = flakes[i];
+    f.y += f.v; f.d += 0.01; f.x += Math.sin(f.d) * 0.5;
+    if (f.y > snow.height) { f.y = -4; f.x = Math.random() * snow.width; }
+    sx.beginPath(); sx.arc(f.x, f.y, f.r, 0, 6.283); sx.fill();
+  }
+}
+function frame() { drawCity(); drawSnow(); raf(frame); }
+makeCity(); makeSnow(); frame();
+window.onresize = function () { makeCity(); makeSnow(); };
+
+// ---------------------------------------------------------------- tips + spotlight
+var tips = [
+  "Press F4 for jobs, the shop, knife cases, crafting and leaderboards.",
+  "Laggy? Type !fps in chat (or F4 &gt; Settings) and turn on Boost FPS.",
+  "Every level gives a skill point. Press F7 to open Supreme Skills.",
+  "Money printers are controlled on their top screen &mdash; aim at a button and press E.",
+  "Bitminers: a rack, mining servers, a generator with gas and a Mining Computer to run it all.",
+  "Mine Gold, Ruby, Sapphire and Obsidian and sell them to the Ore Buyer in the mine.",
+  "Try your luck at the Supreme Casino: slots, blackjack, roulette and Crash.",
+  "When you die you bleed out for 60 seconds &mdash; a medic can revive you.",
+  "Start a clan in F4 &gt; Clan and climb the Top Clans leaderboard.",
+  "Max 5 fading doors per base, and every one needs a keypad.",
+  "Need staff? Type @ followed by your message in chat.",
+  "RDM and prop killing get you banned. The full rules are in F4 &gt; Rules &amp; Help."
+];
+var spots = [
+  ["Knife Cases", "4 cases, CS-style rarities and a 1 in 10 shot at a &#9733; Gold knife."],
+  ["Supreme Bitminer", "Run a server rack, fuel the generator and trade SupremeCoin live."],
+  ["Crips vs Bloods", "Two rival gangs, each with its own boss. Rep your colours."],
+  ["Supreme Skills", "1 point every level, 20 points per skill. Build your character."],
+  ["Santa's Present Drop", "Every 30 minutes &mdash; grab presents for candy canes and cash."]
+];
+var tipIndex = 0, spotIndex = 0;
+function fade(id, html) {
+  var el = document.getElementById(id);
+  el.style.opacity = 0;
+  setTimeout(function () { el.innerHTML = html; el.style.opacity = 1; }, 500);
+}
+setInterval(function () { tipIndex = (tipIndex + 1) % tips.length; fade("tip", tips[tipIndex]); }, 7000);
+setInterval(function () { spotIndex = (spotIndex + 1) % spots.length; fade("spotTitle", spots[spotIndex][0]); fade("spotText", spots[spotIndex][1]); }, 5000);
+
+// ---------------------------------------------------------------- progress
+var filesTotal = 0, filesNeeded = 1, shown = 0;
 function setProgress(p) {
   p = Math.max(3, Math.min(100, p));
+  if (p < shown) return;
+  shown = p;
   document.getElementById("bar").style.width = p + "%";
+  document.getElementById("pct").innerHTML = Math.round(p) + "%";
 }
-function updateFileProgress() {
-  if (filesTotal > 0) setProgress(100 * (filesTotal - filesNeeded) / filesTotal);
-}
+function updateFileProgress() { if (filesTotal > 0) setProgress(10 + 25 * (filesTotal - filesNeeded) / filesTotal); }
 
 // ---- functions Garry's Mod calls while loading ----
 function GameDetails(servername, serverurl, mapname, maxplayers, steamid, gamemode, volume, language) {
-  document.getElementById("map").innerHTML = "Map: " + mapname;
-  document.getElementById("players").innerHTML = "Max players: " + maxplayers;
-  document.getElementById("gm").innerHTML = "Gamemode: " + gamemode;
+  document.getElementById("map").innerHTML = mapname;
+  document.getElementById("players").innerHTML = maxplayers;
+  document.getElementById("gm").innerHTML = gamemode;
   var a = document.getElementById("audio");
   if (a && typeof volume === "number") a.volume = Math.max(0.05, Math.min(1, volume * 0.6));
 }
 function SetFilesTotal(total) { filesTotal = total; updateFileProgress(); }
 function SetFilesNeeded(needed) { filesNeeded = needed; updateFileProgress(); }
-function DownloadingFile(fileName) {
-  document.getElementById("file").innerHTML = "Downloading: " + fileName;
-}
+function DownloadingFile(fileName) { document.getElementById("file").innerHTML = "Downloading: " + fileName; }
 function SetStatusChanged(status) {
   document.getElementById("status").innerHTML = status;
   var s = status.toLowerCase();
-  if (s.indexOf("workshop") >= 0) setProgress(35);
-  if (s.indexOf("lua") >= 0) setProgress(65);
+  if (s.indexOf("workshop") >= 0) setProgress(40);
+  if (s.indexOf("mounting") >= 0) setProgress(55);
+  if (s.indexOf("lua") >= 0) setProgress(70);
   if (s.indexOf("sending client info") >= 0) setProgress(90);
   if (s.indexOf("client info sent") >= 0 || s.indexOf("starting lua") >= 0) setProgress(97);
 }
